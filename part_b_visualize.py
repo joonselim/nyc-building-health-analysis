@@ -55,9 +55,11 @@ def plot_distribution(df):
         ax.hist(df.loc[mask, "health_score"], bins=30,
                 color=colors_per_bin[i], edgecolor="white", linewidth=0.4, alpha=0.9)
 
-    for t, lbl in zip(thresholds, ["Hot prospects", "Warm prospects", "Median"]):
+    y_top = ax.get_ylim()[1]
+    y_levels = [0.95, 0.80, 0.65]
+    for i, (t, lbl) in enumerate(zip(thresholds, ["Hot prospects", "Warm prospects", "Median"])):
         ax.axvline(t, color="#444", linestyle="--", linewidth=0.9, alpha=0.7)
-        ax.text(t + 0.5, ax.get_ylim()[1] * 0.95, lbl,
+        ax.text(t + 0.5, y_top * y_levels[i], lbl,
                 fontsize=8, color="#444", va="top")
 
     patches = [mpatches.Patch(color=COLORS[l], label=l) for l in LABEL_ORDER]

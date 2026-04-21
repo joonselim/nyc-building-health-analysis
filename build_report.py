@@ -178,13 +178,25 @@ def main():
     <h2>NYC Building Management Health Score</h2>
     <p>
       Each building receives a <b>Building Health Score (0–100)</b> based on
-      NYC HPD (Housing Preservation and Development) public violation records.
+      <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Maintenance-Code-Violations/wvxf-dwi5" target="_blank">NYC HPD (Housing Preservation and Development) public violation records</a>.
       A lower score means more unresolved violations, slower resolution, and more hazardous issues —
       signals that a building's current management company is underperforming.
       Across {n_buildings:,} buildings analyzed, there are currently <b>{n_open_viols:,} open violations</b> tracked.
     </p>
-    <p class="section-note">{n_buildings:,} buildings with open HPD violations since Jan 2022 — scored on a 0–100 scale.</p>
+    <p class="section-note">{n_buildings:,} buildings with open HPD violations since Jan 2022 — scored on a 0–100 scale.<br>
+      <a href="https://www.kaggle.com/code/joonselim/notebooked60569f34" target="_blank" style="font-size:0.85rem;">See in Kaggle →</a>
+    </p>
     {summary_html}
+  </div>
+
+  <!-- INTERACTIVE MAP -->
+  <div class="section">
+    <h2>Building Health Score Map</h2>
+    <p class="section-note">
+      Each dot is a building. Color = health label. Click any dot to see address,
+      score, violation breakdown, and average resolution time.
+    </p>
+    <iframe class="map-frame" src="daisy_prospect_map.html"></iframe>
   </div>
 
   <!-- METHODOLOGY -->
@@ -221,20 +233,6 @@ def main():
         <div class="desc">Same violation type appearing multiple times = lower score.</div>
       </div>
     </div>
-    <div style="margin-top:16px; font-size:0.85rem; color:#666;">
-      <b>Data source:</b> NYC Open Data — HPD Housing Maintenance Code Violations (500K rows, updated daily) &nbsp;·&nbsp;
-      Analysis window: Jan 2022 – present
-    </div>
-  </div>
-
-  <!-- INTERACTIVE MAP -->
-  <div class="section">
-    <h2>Interactive Prospect Map</h2>
-    <p class="section-note">
-      Each dot is a building. Color = health label. Click any dot to see address,
-      score, violation breakdown, and average resolution time.
-    </p>
-    <iframe class="map-frame" src="daisy_prospect_map.html"></iframe>
   </div>
 
   <!-- SCORE DISTRIBUTION -->
@@ -278,8 +276,9 @@ def main():
 </div>
 
 <footer>
-  Built by Joonse Lim &nbsp;·&nbsp; Duke Fuqua MBA &nbsp;·&nbsp;
-  Data: NYC Open Data HPD &nbsp;·&nbsp; April 2026
+  Joonse Lim &nbsp;·&nbsp; joonselim@gmail.com &nbsp;·&nbsp;
+  <a href="https://joonse.kr" target="_blank" style="color:#bbb">joonse.kr</a> &nbsp;·&nbsp;
+  Data: <a href="https://data.cityofnewyork.us/Housing-Development/Housing-Maintenance-Code-Violations/wvxf-dwi5" target="_blank" style="color:#bbb">NYC Open Data HPD</a>
 </footer>
 
 </body>

@@ -3,7 +3,6 @@
 .claude/
 __pycache__/
 *.pyc
-kaggle/
 test.txt
 data/hpd_violations.csv
 data/hpd_registrations.csv
