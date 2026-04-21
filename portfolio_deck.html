@@ -148,6 +148,71 @@
 
     /* ─── Slide 3 · Hypothesis ──────────────────────────────────── */
     .s-hypothesis h2 { max-width: 1500px; }
+
+    /* Dark-mode overrides for the signal slide */
+    section.slide.s-hypothesis.dark .body { color: rgba(255, 255, 255, 0.78); }
+    section.slide.s-hypothesis.dark .body b { color: #fff; font-weight: 600; }
+
+    /* HPD data-source block — plain prose, no badges */
+    .s-hypothesis .hpd-block {
+      margin-top: 34px;
+      max-width: 1500px;
+    }
+    .s-hypothesis .hpd-block .hpd-name {
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .s-hypothesis .hpd-block .hpd-desc {
+      font-size: 22px; line-height: 1.55;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .s-hypothesis .hpd-block .hpd-desc em {
+      color: var(--accent); font-style: italic;
+    }
+
+    /* Closing narrative sentence — the punchline that sets up the rest of the deck */
+    .s-hypothesis .narrative {
+      margin-top: auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 26px; line-height: 1.5;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 1500px;
+    }
+    .s-hypothesis .narrative b { color: #fff; font-weight: 600; }
+    .s-hypothesis .narrative em {
+      color: var(--accent); font-style: italic; font-weight: 600;
+    }
+
+    .s-hypothesis .data-strip {
+      margin-top: 44px;
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 18px;
+      padding: 18px 26px;
+      background: rgba(15,27,45,0.04);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      font-size: 22px;
+      color: var(--muted);
+    }
+    .s-hypothesis .data-strip b { color: var(--ink); font-weight: 600; }
+    .s-hypothesis .data-strip .ds-sep { color: var(--rule); font-weight: 400; }
+    .s-hypothesis .data-strip .ds-tag {
+      font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 4px;
+      background: rgba(201,100,28,0.12); color: var(--accent);
+      font-weight: 600; margin-right: 4px;
+    }
+    section.slide.s-hypothesis.dark .data-strip {
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.72);
+    }
+    section.slide.s-hypothesis.dark .data-strip b { color: #fff; }
+    section.slide.s-hypothesis.dark .data-strip .ds-sep { color: rgba(255, 255, 255, 0.22); }
+    section.slide.s-hypothesis.dark .data-strip .ds-tag {
+      background: rgba(201, 100, 28, 0.22); color: var(--accent);
+    }
     .s-hypothesis .quote-card {
       margin-top: 48px;
       padding: 32px 44px;
@@ -369,6 +434,118 @@
       color: #fff;
     }
     .s-close .sig b { color: #fff; font-weight: 600; display: block; font-size: 30px; margin-bottom: 8px; letter-spacing: -0.005em; text-transform: none; }
+
+    /* ─── Project showcase slides (Other Work) ───────────────────── */
+    .s-project { padding: 76px 100px 56px; }
+    .s-project .project-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 40px; margin-bottom: 32px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .s-project .project-head .title-block .eyebrow { margin-bottom: 12px; }
+    .s-project .category-tag {
+      display: inline-block; margin-bottom: 14px;
+      padding: 5px 13px; border-radius: 999px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .s-project .category-tag.cat-planning {
+      background: rgba(201,100,28,0.12); color: var(--accent);
+    }
+    .s-project .category-tag.cat-transform {
+      background: rgba(69,117,180,0.14); color: var(--blue);
+    }
+    .s-project .category-tag.cat-dev {
+      background: rgba(15,27,45,0.08); color: var(--ink-2);
+    }
+    .s-project .project-head h3 {
+      font-size: 52px; font-weight: 500; line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .s-project .project-head h3 em { color: var(--accent); font-style: italic; }
+    .s-project .project-head .links {
+      display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
+      font-size: 16px; color: var(--muted); letter-spacing: 0.01em;
+    }
+    .s-project .project-head .links a {
+      color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px;
+    }
+    .s-project .two-col {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 56px;
+      min-height: 0;
+    }
+    .s-project .info-col { display: flex; flex-direction: column; gap: 22px; }
+    .s-project .info-col .block h4 {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 8px;
+    }
+    .s-project .info-col p {
+      font-size: 22px; line-height: 1.5;
+      color: rgba(15,27,45,0.82);
+    }
+    .s-project .info-col ul {
+      list-style: none; padding: 0; margin: 0;
+    }
+    .s-project .info-col ul li {
+      font-size: 21px; line-height: 1.45; padding: 4px 0 4px 22px;
+      position: relative; color: rgba(15,27,45,0.82);
+    }
+    .s-project .info-col ul li::before {
+      content: '■'; position: absolute; left: 2px; top: 6px;
+      color: var(--accent); font-size: 11px;
+    }
+    .s-project .info-col .chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .s-project .info-col .chip {
+      font-size: 15px; padding: 5px 13px; border-radius: 999px;
+      background: rgba(15,27,45,0.07); color: var(--ink-2);
+      font-weight: 500; letter-spacing: 0.01em;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .s-project .demo-col {
+      position: relative;
+      border-radius: 16px; overflow: hidden;
+      background: #0f1b2d;
+      box-shadow: 0 6px 28px rgba(15,27,45,0.18);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .s-project .demo-col iframe {
+      width: 100%; height: 100%; border: 0; display: block;
+      background: #fff;
+    }
+    /* Phone-frame variant for mobile-first demos */
+    .s-project .demo-col.phone { padding: 28px; background: #0f1b2d; }
+    .s-project .demo-col.phone iframe {
+      width: 380px; height: 100%; max-height: 760px;
+      border-radius: 28px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+    .s-project .demo-col img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .s-project .demo-col .demo-tag {
+      position: absolute; top: 16px; left: 16px;
+      font-size: 11px; padding: 5px 10px; border-radius: 4px;
+      background: rgba(255,255,255,0.92); color: var(--ink);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 600; z-index: 2;
+    }
+    .s-project .demo-col .fallback {
+      padding: 48px; color: #fff; text-align: center;
+      display: flex; flex-direction: column; gap: 14px; align-items: center;
+      font-size: 18px;
+    }
+    .s-project .demo-col .fallback .note {
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
   </style>
 </head>
 
@@ -418,7 +595,7 @@
   </section>
 
   <!-- ─────────────────────────────────── 3. Hypothesis ─── -->
-  <section class="slide s-hypothesis" data-label="Hypothesis">
+  <section class="slide s-hypothesis dark" data-label="Hypothesis">
     <div class="eyebrow">The signal</div>
     <h2 class="headline">
       Unresolved HPD violations are<br>
@@ -428,13 +605,25 @@
     <p class="body" style="max-width: 1500px;">
       Buildings with high volumes of open violations, slow resolution times,
       and repeat complaints are almost always buildings whose boards are
-      <b>already frustrated</b> with their property manager.
+      <b>already frustrated</b> with their property manager — <em>before</em>
+      they start looking for a replacement.
     </p>
-    <!-- <div class="quote-card">
-      "Your current management isn't doing enough —
-      we do more, faster, with full transparency."
-      <span class="who">Daisy's pitch to boards · Company materials</span>
-    </div> -->
+
+    <div class="hpd-block">
+      <h4 class="hpd-name">NYC HPD · Housing Maintenance Code Violations</h4>
+      <p class="hpd-desc">
+        Publicly updated daily by the NYC Department of Housing Preservation and
+        Development. Every violation issued against a residential building carries
+        a severity class, inspection date, and resolution status —
+        <em>government-issued, timestamped, and not self-reported.</em>
+      </p>
+    </div>
+
+    <p class="narrative">
+      Analyzed <b>19,170 buildings</b> and <b>81,137 open violations</b>.
+      Of those, <em>28</em> matter for Daisy — and the rest of this deck is about
+      who they are.
+    </p>
 
     <div class="footstrip">
       <!-- <span>Daisy Prospect Intelligence</span> -->
@@ -442,7 +631,8 @@
     </div>
   </section>
 
-  <!-- ─────────────────────────────────────── 4. Data ─── -->
+  <!-- ─────────────────────────────────────── 4. Data ─── (removed — essence moved to slide 3) -->
+  <!--
   <section class="slide s-data dark" data-label="Data">
     <div class="eyebrow">The data</div>
     <h2 class="headline" style="max-width: 1400px;">
@@ -473,6 +663,7 @@
       <span>04</span>
     </div>
   </section>
+  -->
 
   <!-- ──────────────────────────────── 5. Methodology ─── -->
   <section class="slide s-method" data-label="Methodology">
@@ -517,7 +708,7 @@
 
     <div class="footstrip">
       <!-- <span>Daisy Prospect Intelligence</span> -->
-      <span>05</span>
+      <span>04</span>
     </div>
   </section>
 
@@ -564,7 +755,7 @@
 
     <div class="footstrip">
       <!-- <span>Daisy Prospect Intelligence</span> -->
-      <span>06</span>
+      <span>05</span>
     </div>
   </section>
 
@@ -580,16 +771,27 @@
         <br>Red dot on a cluster = at least one "poorly managed" building.
       </p>
     </div>
-    <div class="map-wrap" style="display:flex; align-items:center; justify-content:center;">
+    <div class="map-wrap" style="position:relative; display:flex; align-items:center; justify-content:center;">
+      <img src="screenshot/screenshot.png"
+           alt="Preview of the interactive prospect map"
+           style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      <!-- subtle dim layer so the CTA button stays legible on any screenshot -->
+      <div style="position:absolute; inset:0; background:rgba(15,27,45,0.18);"></div>
       <a href="https://joonselim.github.io/nyc-building-health-analysis/daisy_prospect_map.html"
          target="_blank"
-         style="display:inline-flex; align-items:center; gap:14px; padding:22px 40px;
+         style="position:relative; z-index:2;
+                display:inline-flex; align-items:center; gap:14px; padding:22px 40px;
                 background:var(--accent); color:#fff; border-radius:12px;
                 font-size:24px; font-weight:600; letter-spacing:0.02em; text-decoration:none;
-                box-shadow:0 4px 20px rgba(201,100,28,0.35);">
+                box-shadow:0 6px 24px rgba(15,27,45,0.4), 0 2px 8px rgba(201,100,28,0.45);">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
         Open Interactive Map →
       </a>
+    </div>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>06</span>
     </div>
   </section>
 
@@ -630,37 +832,36 @@
 
     <div class="footstrip">
       <!-- <span>Daisy Prospect Intelligence</span> -->
-      <span>08</span>
+      <span>07</span>
     </div>
   </section>
 
-  <!-- ──────────────────────── 9. Score distribution ─── -->
+  <!-- ──────── 9. Score distribution & 10. Borough breakdown — removed
+       (the "poor" tier is too small to read visibly in these charts;
+       the tier table on slide 5 already carries that information) ────
   <section class="slide s-chart" data-label="Score Distribution">
     <div class="eyebrow">Distribution</div>
     <h3 class="sub">Most NYC buildings land in the <em>moderate-to-well</em> zone.</h3>
     <div class="chart-wrap">
       <img src="score_distribution.png" alt="Score distribution histogram">
     </div>
-
     <div class="footstrip">
       <span>Daisy Prospect Intelligence</span>
       <span>07</span>
     </div>
   </section>
 
-  <!-- ─────────────────────── 8. Borough breakdown ─── -->
   <section class="slide s-chart" data-label="Borough Breakdown">
     <div class="eyebrow">By borough</div>
     <h3 class="sub">Manhattan, Brooklyn, Bronx — <em>different stories.</em></h3>
     <div class="chart-wrap">
       <img src="borough_breakdown.png" alt="Average health score by borough">
     </div>
-
     <div class="footstrip">
-      <!-- <span>Daisy Prospect Intelligence</span> -->
       <span>08</span>
     </div>
   </section>
+  -->
 
   <!-- ─────────────────── 11. Product integration ─── -->
   <section class="slide s-integration" data-label="Product Integration">
@@ -699,13 +900,212 @@
       </div>
     </div>
 
+    <div style="margin-top: 40px; display: flex; gap: 24px; flex-wrap: wrap;">
+      <a href="https://joonselim.github.io/nyc-building-health-analysis/report.html"
+         target="_blank"
+         style="font-size:20px; color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent); padding-bottom:2px;">
+        See detailed report →
+      </a>
+      <a href="https://www.kaggle.com/code/joonselim/notebooked60569f34"
+         target="_blank"
+         style="font-size:20px; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:2px;">
+        Kaggle code →
+      </a>
+    </div>
+
     <div class="footstrip">
       <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>08</span>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── 12. Other Work · Audible ─── -->
+  <section class="slide s-project" data-label="Other Work — Audible" data-slide-key="proj-audible">
+    <div class="project-head">
+      <div class="title-block">
+        <div class="eyebrow">Other work · 01 / 03</div>
+        <span class="category-tag cat-planning">Product planning</span>
+        <h3>Audible <em>Read &amp; Listen</em> — scroll-to-seek prototype</h3>
+      </div>
+      <div class="links">
+        <span>Live demo</span>
+        <a href="https://audiblereadandlistenscrollmodify.vercel.app/player" target="_blank">audiblereadandlisten…vercel.app/player ↗</a>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-col">
+        <div class="block">
+          <h4>Product thesis</h4>
+          <p>Audiobook text should not be chained to the playhead. Readers want to browse ahead, jump back, and read-without-listening — the current UX doesn't let them.</p>
+        </div>
+        <div class="block">
+          <h4>Interaction design</h4>
+          <ul>
+            <li>Locked (default) — text auto-scrolls with audio</li>
+            <li>First scroll surfaces a "scroll up to unlock" hint</li>
+            <li>Unlocked — text freezes, every word becomes tappable</li>
+            <li>Tap a word → playback seeks to that word, text re-locks</li>
+            <li>"Go back to 1:49" pill remembers the pre-seek position</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>Precedents studied</h4>
+          <div class="chips">
+            <span class="chip">YouTube Music · lyrics</span>
+            <span class="chip">Spotify · lyrics</span>
+            <span class="chip">Audible mobile app</span>
+            <span class="chip">Dune Ch. 31 · test content</span>
+          </div>
+        </div>
+        <div class="block">
+          <h4>Why</h4>
+          <p>Music apps solved scroll-to-seek on lyrics years ago. Long-form reading deserves the same freedom — and the fix is interaction design, not a new model or backend.</p>
+        </div>
+      </div>
+
+      <div class="demo-col phone">
+        <div class="demo-tag">Live · tap words to seek</div>
+        <iframe data-src="https://audiblereadandlistenscrollmodify.vercel.app/player"
+                title="Audible Read & Listen prototype"
+                allow="autoplay; fullscreen"
+                loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="footstrip">
+      <span>Other Work</span>
+      <span>09</span>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── 13. Other Work · SHIS ─── -->
+  <section class="slide s-project" data-label="Other Work — SHIS" data-slide-key="proj-shis">
+    <div class="project-head">
+      <div class="title-block">
+        <div class="eyebrow">Other work · 02 / 03 · Microsoft Atlanta Buildathon</div>
+        <span class="category-tag cat-transform">Transformation</span>
+        <h3>SHIS — <em>Shift Handover</em> Intelligence System</h3>
+      </div>
+      <div class="links">
+        <span>Live demo · GitHub</span>
+        <a href="https://joonselim.github.io/sea_tech_summit_microsoft_buildathon/" target="_blank">joonselim.github.io/sea_tech_summit… ↗</a>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-col">
+        <div class="block">
+          <h4>Transformation goal</h4>
+          <p>Replace an unreliable, paper-based shift-handover ritual with a structured, auditable, 2-minute workflow — standardized across operators, supervisors, and plant managers.</p>
+        </div>
+        <div class="block">
+          <h4>Interventions</h4>
+          <ul>
+            <li>Structured capture UI in place of paper notebooks</li>
+            <li>Bridge the silo between machine alarms and operator tacit knowledge</li>
+            <li>Auto-generated standardized shift report</li>
+            <li>Digital sign-off — accountability across every shift</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>Stakeholders &amp; scope</h4>
+          <div class="chips">
+            <span class="chip">Plant operators</span>
+            <span class="chip">Shift supervisors</span>
+            <span class="chip">Plant manager</span>
+            <span class="chip">Target: time-to-context &lt; 2 min</span>
+          </div>
+        </div>
+        <div class="block">
+          <h4>Why</h4>
+          <p>Manual handover is where production minutes disappear. Built as a POC for the Microsoft Atlanta Buildathon's AI-workforce-transformation track — the change is organizational, not just technological.</p>
+        </div>
+      </div>
+
+      <div class="demo-col">
+        <div class="demo-tag">Screen recording</div>
+        <img src="gif/shis.gif" alt="SHIS dashboard in action"
+             style="object-fit: contain; background: #0f1b2d;"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="fallback" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <div>Dashboard recording placeholder</div>
+          <div class="note">Drop in <code style="color:rgba(255,255,255,0.75); font-family:ui-monospace,Menlo,monospace; background:rgba(255,255,255,0.08); padding:1px 6px; border-radius:3px;">gif/shis.gif</code></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footstrip">
+      <span>Other Work</span>
+      <span>10</span>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── 14. Other Work · Phone Agent ─── -->
+  <section class="slide s-project" data-label="Other Work — Phone Agent" data-slide-key="proj-phone">
+    <div class="project-head">
+      <div class="title-block">
+        <div class="eyebrow">Other work · 03 / 03</div>
+        <span class="category-tag cat-dev">Development</span>
+        <h3>Phone Agent — <em>natural-language</em> Android control</h3>
+      </div>
+      <div class="links">
+        <span>GitHub</span>
+        <a href="https://github.com/joonselim/phone-agent-try" target="_blank">github.com/joonselim/phone-agent-try ↗</a>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="info-col">
+        <div class="block">
+          <h4>Intent</h4>
+          <p>Control an Android phone entirely by typing natural-language commands — "order me KFC", "open Uber to my office".</p>
+        </div>
+        <div class="block">
+          <h4>Architecture</h4>
+          <ul>
+            <li>Claude parses user intent and extracts parameters</li>
+            <li>Router dispatches to service handlers (Uber Eats, Amazon)</li>
+            <li>Droidrun + ADB drive the device without any user taps</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>Stack</h4>
+          <div class="chips">
+            <span class="chip">Claude API (Sonnet)</span>
+            <span class="chip">Droidrun SDK</span>
+            <span class="chip">ADB</span>
+            <span class="chip">Python 3.12</span>
+            <span class="chip">uv</span>
+          </div>
+        </div>
+        <div class="block">
+          <h4>Why</h4>
+          <p>Hands-free device control is where LLMs actually pay off — describe what you want, the agent operates the app. A US-adapted fork of DDalkkak (Korean original), rebuilt around US services.</p>
+        </div>
+      </div>
+
+      <div class="demo-col">
+        <div class="demo-tag">Screen recording</div>
+        <img src="gif/phone_agent.gif" alt="Phone Agent in action"
+             style="object-fit: contain; background: #0f1b2d;"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="fallback" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+          <div>Screen recording placeholder</div>
+          <div class="note">Drop in <code style="color:rgba(255,255,255,0.75); font-family:ui-monospace,Menlo,monospace; background:rgba(255,255,255,0.08); padding:1px 6px; border-radius:3px;">gif/phone_agent.gif</code></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footstrip">
+      <span>Other Work</span>
       <span>11</span>
     </div>
   </section>
 
-  <!-- ───────────────────────── 12. Closing ─── -->
+  <!-- ───────────────────────── 15. Closing ─── -->
   <section class="slide s-close dark" data-label="Closing">
     <div class="big">
       I understand your domain.<br>
@@ -721,6 +1121,22 @@
 
 </deck-stage>
 
+<!-- Lazy-load external demo iframes: set src only when the slide first
+     becomes active. Avoids fetching three third-party demos on initial
+     page load, and dodges iframes being kept alive in hidden slides. -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stage = document.querySelector('deck-stage');
+    if (!stage) return;
+    stage.addEventListener('slidechange', (e) => {
+      const slide = e.detail && e.detail.slide;
+      if (!slide) return;
+      slide.querySelectorAll('iframe[data-src]').forEach((f) => {
+        if (!f.src && f.dataset.src) f.src = f.dataset.src;
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
