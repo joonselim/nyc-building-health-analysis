@@ -172,8 +172,6 @@ def main():
 <body>
 
 <div class="hero">
-  <h1>Daisy Prospect Intelligence</h1>
-  <p class="sub">Building Health Score — NYC HPD Violation Analysis &nbsp;|&nbsp; Built by Joonse Lim</p>
   <div class="kpi-row">
     <div class="kpi">
       <div class="num">{n_buildings:,}</div>
@@ -196,32 +194,57 @@ def main():
 
 <div class="container">
 
-  <!-- WHAT IS THIS -->
-  <div class="section">
-    <h2>What This Is</h2>
-    <p>
-      Daisy grows by winning buildings from underperforming management companies.
-      This tool quantifies <em>which buildings are most likely to be unhappy with their current management</em>
-      — using NYC's publicly available HPD violation data.
-    </p>
-    <p>
-      Every building in New York receives a <b>Building Health Score (0–100)</b>:
-      lower score = more unresolved violations, slower response, more hazardous issues.
-      Low-scoring buildings are the ones most likely to consider switching management companies.
-    </p>
-    <div class="caveat">
-      <b>Note:</b> This analysis does not identify which buildings Daisy currently manages —
-      that data is internal. The scores here reflect <em>management quality signals</em> derived
-      solely from public HPD records. A Daisy sales team could layer in their own portfolio
-      to exclude existing clients and focus outreach on the rest.
-    </div>
-  </div>
-
   <!-- SUMMARY TABLE -->
   <div class="section">
     <h2>Score Summary</h2>
-    <p class="section-note">19,170 buildings with open HPD violations since Jan 2022 — scored on a 0–100 scale.</p>
+    <p>
+      Each building receives a <b>Building Health Score (0–100)</b> based on
+      NYC HPD (Housing Preservation and Development) public violation records.
+      A lower score means more unresolved violations, slower resolution, and more hazardous issues —
+      signals that a building's current management company is underperforming.
+    </p>
+    <p class="section-note">{n_buildings:,} buildings with open HPD violations since Jan 2022 — scored on a 0–100 scale.</p>
     {summary_html}
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="section">
+    <h2>How the Score is Calculated</h2>
+    <p class="section-note">
+      Weighted composite of five components, each normalized 0–100 across the full dataset.
+      Higher component score = better management on that dimension.
+    </p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="weight">30%</div>
+        <div class="name">Open Violation Count</div>
+        <div class="desc">Total unresolved violations. More = lower score.</div>
+      </div>
+      <div class="method-card">
+        <div class="weight">25%</div>
+        <div class="name">Violation Severity</div>
+        <div class="desc">Class C × 3, Class B × 2, Class A × 1. Weighted sum.</div>
+      </div>
+      <div class="method-card">
+        <div class="weight">20%</div>
+        <div class="name">Resolution Speed</div>
+        <div class="desc">Avg days to close a violation. Slower = lower score.</div>
+      </div>
+      <div class="method-card">
+        <div class="weight">15%</div>
+        <div class="name">Recency</div>
+        <div class="desc">Violations issued in the last 6 months. More recent = lower score.</div>
+      </div>
+      <div class="method-card">
+        <div class="weight">10%</div>
+        <div class="name">Repeat Violation Rate</div>
+        <div class="desc">Same violation type appearing multiple times = lower score.</div>
+      </div>
+    </div>
+    <div style="margin-top:16px; font-size:0.85rem; color:#666;">
+      <b>Data source:</b> NYC Open Data — HPD Housing Maintenance Code Violations (500K rows, updated daily) &nbsp;·&nbsp;
+      Analysis window: Jan 2022 – present
+    </div>
   </div>
 
   <!-- INTERACTIVE MAP -->
@@ -271,48 +294,6 @@ def main():
     {top20_html}
   </div>
 
-  <!-- METHODOLOGY -->
-  <div class="section">
-    <h2>Methodology</h2>
-    <p class="section-note">
-      Score is a weighted composite of five components, each normalized 0–100 with min-max scaling
-      across the full dataset. Higher component score = better management on that dimension.
-    </p>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="weight">30%</div>
-        <div class="name">Open Violation Count</div>
-        <div class="desc">Total unresolved violations. More = lower score.</div>
-      </div>
-      <div class="method-card">
-        <div class="weight">25%</div>
-        <div class="name">Violation Severity</div>
-        <div class="desc">Class C × 3, Class B × 2, Class A × 1. Weighted sum.</div>
-      </div>
-      <div class="method-card">
-        <div class="weight">20%</div>
-        <div class="name">Resolution Speed</div>
-        <div class="desc">Avg days to close a violation. Slower = lower score.</div>
-      </div>
-      <div class="method-card">
-        <div class="weight">15%</div>
-        <div class="name">Recency</div>
-        <div class="desc">Violations issued in the last 6 months. More recent = lower score.</div>
-      </div>
-      <div class="method-card">
-        <div class="weight">10%</div>
-        <div class="name">Repeat Violation Rate</div>
-        <div class="desc">Same violation type appearing multiple times = lower score.</div>
-      </div>
-    </div>
-
-    <h3>Data Sources</h3>
-    <ul style="font-size:0.9rem; color:#444;">
-      <li><b>HPD Housing Maintenance Code Violations</b> — NYC Open Data (500K rows, updated daily)</li>
-      <li><b>HPD Multiple Dwelling Registrations</b> — NYC Open Data (active registrations filter)</li>
-      <li>Analysis window: Jan 2022 – present &nbsp;|&nbsp; Buildings: active registration only</li>
-    </ul>
-  </div>
 
 </div>
 
