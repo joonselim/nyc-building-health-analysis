@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daisy Prospect Intelligence — Joonse Lim</title>
+  <script src="deck-stage.js" defer></script>
+  <style>
+    :root {
+      --ink:      #0f1b2d;
+      --ink-2:    #1a2940;
+      --paper:    #fbf9f4;
+      --paper-2:  #f3efe6;
+      --rule:     rgba(15, 27, 45, 0.12);
+      --muted:    rgba(15, 27, 45, 0.58);
+      --accent:   #c9641c;   /* Daisy-friendly warm orange */
+      --red:      #d73027;
+      --orange:   #fc8d59;
+      --yellow:   #ddb643;
+      --blue:     #4575b4;
+      --green:    #6ecc39;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      background: #000;
+      font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Slide shell ───────────────────────────────────────────── */
+    section.slide {
+      background: var(--paper);
+      padding: 96px 140px;
+      display: flex;
+      flex-direction: column;
+      font-size: 28px;
+      line-height: 1.45;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    section.slide.dark {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    section.slide.dark .muted { color: rgba(255,255,255,0.6); }
+    section.slide.dark .eyebrow { color: rgba(255,255,255,0.55); }
+    section.slide.dark .rule { background: rgba(255,255,255,0.15); }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .rule {
+      width: 72px; height: 3px; background: var(--accent);
+      margin: 18px 0 28px;
+    }
+    h1.display {
+      font-size: 128px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    h1.display em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    h2.headline {
+      font-size: 84px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    h2.headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    h3.sub {
+      font-size: 44px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+    .muted { color: var(--muted); }
+    .body  { font-size: 30px; line-height: 1.5; max-width: 1400px; color: rgba(15,27,45,0.78); }
+    .body  b { color: var(--ink); font-weight: 600; }
+    .small { font-size: 22px; color: var(--muted); }
+
+    /* Footer strip with slide number + deck title */
+    .footstrip {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    section.slide.dark .footstrip { border-top-color: rgba(255,255,255,0.15); }
+
+    /* ─── Slide 1 · Title ───────────────────────────────────────── */
+    .s-title {
+      justify-content: center;
+      background:
+        radial-gradient(1200px 600px at 15% 12%, rgba(201, 100, 28, 0.12), transparent 60%),
+        radial-gradient(900px 500px at 85% 85%, rgba(69, 117, 180, 0.15), transparent 55%),
+        var(--paper);
+    }
+    .s-title .meta-row {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-top: 80px;
+    }
+    .s-title .meta-row > div { font-size: 22px; }
+    .s-title .meta-row b { display: block; font-size: 24px; font-weight: 600; margin-bottom: 4px; }
+
+    /* ─── Slide 2 · Question ────────────────────────────────────── */
+    .s-question {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .s-question .quote {
+      font-size: 82px;
+      line-height: 1.18;
+      font-weight: 500;
+      letter-spacing: -0.018em;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+    .s-question .quote em { color: var(--accent); font-style: italic; }
+    .s-question .attribution {
+      margin-top: 56px;
+      font-size: 22px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Slide 3 · Hypothesis ──────────────────────────────────── */
+    .s-hypothesis h2 { max-width: 1500px; }
+    .s-hypothesis .quote-card {
+      margin-top: 48px;
+      padding: 32px 44px;
+      background: rgba(201, 100, 28, 0.08);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      font-size: 34px;
+      line-height: 1.4;
+      max-width: 1400px;
+    }
+    .s-hypothesis .quote-card .who {
+      display: block;
+      margin-top: 12px;
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Slide 4 · Data ────────────────────────────────────────── */
+    .s-data .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+      margin-top: 80px;
+    }
+    .s-data .stat .n {
+      font-size: 140px;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+    .s-data .stat .label {
+      margin-top: 20px;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    /* ─── Slide 5 · Score methodology ───────────────────────────── */
+    .s-method .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .s-method .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 28px;
+      box-shadow: 0 1px 6px rgba(15,27,45,0.08);
+      border-top: 4px solid var(--accent);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .s-method .card .w {
+      font-size: 56px; font-weight: 500; line-height: 1;
+      letter-spacing: -0.02em; color: var(--ink);
+    }
+    .s-method .card .nm {
+      font-weight: 600; font-size: 24px; letter-spacing: -0.005em;
+    }
+    .s-method .card .desc { font-size: 19px; color: var(--muted); line-height: 1.45; }
+    .s-method .formula {
+      margin-top: 48px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      background: rgba(15,27,45,0.05);
+      padding: 22px 30px;
+      border-radius: 10px;
+      font-size: 22px;
+      color: var(--ink-2);
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── Slide 6 · Tier distribution ───────────────────────────── */
+    .s-tiers .tier-row {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 60px 320px 1fr 180px 140px;
+      gap: 24px;
+      align-items: center;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 26px;
+    }
+    .s-tiers .tier-row .dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.6);
+    }
+    .s-tiers .tier-row .label { font-weight: 600; font-size: 30px; }
+    .s-tiers .tier-row .bar {
+      height: 22px; border-radius: 11px; background: rgba(15,27,45,0.06);
+      overflow: hidden; position: relative;
+    }
+    .s-tiers .tier-row .bar .fill { height: 100%; border-radius: 11px; }
+    .s-tiers .tier-row .count { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+    .s-tiers .tier-row .share { font-variant-numeric: tabular-nums; color: var(--muted); text-align: right; }
+    .s-tiers .callout {
+      margin-top: 44px;
+      padding: 24px 34px;
+      background: rgba(215, 48, 39, 0.08);
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      font-size: 26px;
+      max-width: 1400px;
+    }
+    .s-tiers .callout b { color: var(--red); }
+
+    /* ─── Slide 7, 8 · Charts ───────────────────────────────────── */
+    .s-chart .chart-wrap {
+      flex: 1;
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 14px;
+      padding: 36px;
+      box-shadow: 0 1px 6px rgba(15,27,45,0.06);
+    }
+    .s-chart .chart-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    /* ─── Slide 9 · Top prospects ───────────────────────────────── */
+    .s-prospects table {
+      width: 100%;
+      margin-top: 40px;
+      border-collapse: collapse;
+      font-size: 22px;
+    }
+    .s-prospects thead th {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--ink);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .s-prospects tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+      font-variant-numeric: tabular-nums;
+    }
+    .s-prospects tbody tr:first-child td {
+      background: rgba(215, 48, 39, 0.07);
+      font-weight: 600;
+    }
+    .s-prospects .score {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 600;
+      font-size: 20px;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* ─── Slide 10 · Map ────────────────────────────────────────── */
+    .s-map { padding: 64px 80px; }
+    .s-map .map-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+    .s-map .map-header h3 { font-size: 44px; font-weight: 500; letter-spacing: -0.015em; }
+    .s-map .map-header .small { text-align: right; max-width: 700px; }
+    .s-map .map-wrap {
+      flex: 1; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(15,27,45,0.12);
+      background: #eee;
+      position: relative;
+    }
+    .s-map iframe {
+      width: 100%; height: 100%; border: 0;
+      display: block;
+    }
+    .s-map .placeholder {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    /* ─── Slide 11 · Product integration ────────────────────────── */
+    .s-integration .steps {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .s-integration .step {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 36px;
+      box-shadow: 0 1px 6px rgba(15,27,45,0.06);
+      display: flex; gap: 24px;
+      align-items: flex-start;
+    }
+    .s-integration .step .num {
+      font-size: 52px; font-weight: 500;
+      color: var(--accent);
+      line-height: 1; min-width: 70px;
+    }
+    .s-integration .step .nm { font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+    .s-integration .step .desc { font-size: 20px; color: var(--muted); line-height: 1.5; }
+
+    /* ─── Slide 12 · Closing ────────────────────────────────────── */
+    .s-close { justify-content: center; align-items: center; text-align: center; }
+    .s-close .big {
+      font-size: 88px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .s-close .big em { color: var(--accent); font-style: italic; }
+    .s-close .sig {
+      margin-top: 72px;
+      font-size: 22px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .s-close .sig b { color: #fff; font-weight: 600; display: block; font-size: 30px; margin-bottom: 8px; letter-spacing: -0.005em; text-transform: none; }
+  </style>
+</head>
+
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ─────────────────────────────────────────── 1. Title ─── -->
+  <section class="slide s-title" data-label="Title">
+    <div class="eyebrow">Portfolio · Summer '26 · Product Operations</div>
+    <h1 class="display">
+      Daisy<br>
+      Prospect <em>Intelligence.</em>
+    </h1>
+    <div class="rule" style="margin-top: 40px;"></div>
+    <div class="body" style="margin-top: 24px; max-width: 1200px;">
+      A lead-prioritization prototype for Daisy's growth team,
+      built from public NYC data.
+    </div>
+
+    <div class="meta-row">
+      <div>
+        <b>Joonse Lim</b>
+        Duke Fuqua MBA '27 · Software, AI startup, PM background
+      </div>
+      <div style="text-align: right;">
+        <b>For Daisy</b>
+        Summer Internship
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────── 2. Question ─── -->
+  <section class="slide s-question" data-label="The Question">
+    <div class="eyebrow">The question</div>
+    <p class="quote">
+      Which NYC buildings are most likely<br>
+      <em>unhappy</em> with their current property manager —<br>
+      and where are they?
+    </p>
+    <div class="attribution">A question Daisy's growth team actually would ask</div>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>02</span>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────── 3. Hypothesis ─── -->
+  <section class="slide s-hypothesis" data-label="Hypothesis">
+    <div class="eyebrow">The signal</div>
+    <h2 class="headline">
+      Unresolved HPD violations are<br>
+      a <em>leading indicator</em> of bad management.
+    </h2>
+    <div class="rule"></div>
+    <p class="body" style="max-width: 1500px;">
+      Buildings with high volumes of open violations, slow resolution times,
+      and repeat complaints are almost always buildings whose boards are
+      <b>already frustrated</b> with their property manager.
+    </p>
+    <!-- <div class="quote-card">
+      "Your current management isn't doing enough —
+      we do more, faster, with full transparency."
+      <span class="who">Daisy's pitch to boards · Company materials</span>
+    </div> -->
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>03</span>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────── 4. Data ─── -->
+  <section class="slide s-data dark" data-label="Data">
+    <div class="eyebrow">The data</div>
+    <h2 class="headline" style="max-width: 1400px;">
+      NYC HPD Housing Maintenance Code Violations.
+    </h2>
+    <p class="body" style="color: rgba(255,255,255,0.78); margin-top: 18px; max-width: 1500px;">
+      Publicly updated daily by the NYC Department of Housing Preservation and Development.
+      No internal data, no scraping — this is information Daisy already references.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="n">19,170</div>
+        <div class="label">Buildings analyzed</div>
+      </div>
+      <div class="stat">
+        <div class="n">81,137</div>
+        <div class="label">Open violations tracked</div>
+      </div>
+      <div class="stat">
+        <div class="n">5</div>
+        <div class="label">Signals per building</div>
+      </div>
+    </div>
+
+    <div class="footstrip">
+      <span>Daisy Prospect Intelligence</span>
+      <span>04</span>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────── 5. Methodology ─── -->
+  <section class="slide s-method" data-label="Methodology">
+    <div class="eyebrow">Building health score</div>
+    <h2 class="headline">A weighted composite, <em>0&ndash;100.</em></h2>
+    <p class="body" style="max-width: 1500px; margin-top: 12px;">
+      Each component is normalized across all buildings, then combined with
+      explicit weights. Lower score = worse management = hotter prospect.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="w">30%</div>
+        <div class="nm">Open violations</div>
+        <div class="desc">Total unresolved. More = lower score.</div>
+      </div>
+      <div class="card">
+        <div class="w">25%</div>
+        <div class="nm">Severity</div>
+        <div class="desc">Class C ×3, B ×2, A ×1. Weighted sum.</div>
+      </div>
+      <div class="card">
+        <div class="w">20%</div>
+        <div class="nm">Resolution speed</div>
+        <div class="desc">Avg days to close. Slower = lower score.</div>
+      </div>
+      <div class="card">
+        <div class="w">15%</div>
+        <div class="nm">Recency</div>
+        <div class="desc">Violations in last 6 months.</div>
+      </div>
+      <div class="card">
+        <div class="w">10%</div>
+        <div class="nm">Repeat rate</div>
+        <div class="desc">Same violation type recurring.</div>
+      </div>
+    </div>
+
+    <div class="formula">
+      score = 0.30·open + 0.25·severity + 0.20·resolution + 0.15·recency + 0.10·repeat
+    </div>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>05</span>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────── 6. Tier distribution ─── -->
+  <section class="slide s-tiers" data-label="Tiers">
+    <div class="eyebrow">Four tiers</div>
+    <h2 class="headline">Where do <em>the prospects</em> live?</h2>
+    <div class="rule"></div>
+
+    <div class="tier-row">
+      <div class="dot" style="background: var(--red);"></div>
+      <div class="label">Poorly managed <span class="muted" style="font-weight:400">(&lt; 70)</span></div>
+      <div class="bar"><div class="fill" style="width: 1%; background: var(--red);"></div></div>
+      <div class="count">28</div>
+      <div class="share">0.1%</div>
+    </div>
+    <div class="tier-row">
+      <div class="dot" style="background: var(--orange);"></div>
+      <div class="label">Struggling <span class="muted" style="font-weight:400">(70–80)</span></div>
+      <div class="bar"><div class="fill" style="width: 10%; background: var(--orange);"></div></div>
+      <div class="count">689</div>
+      <div class="share">3.6%</div>
+    </div>
+    <div class="tier-row">
+      <div class="dot" style="background: var(--yellow);"></div>
+      <div class="label">Moderate <span class="muted" style="font-weight:400">(80–90)</span></div>
+      <div class="bar"><div class="fill" style="width: 85%; background: var(--yellow);"></div></div>
+      <div class="count">8,468</div>
+      <div class="share">44.2%</div>
+    </div>
+    <div class="tier-row">
+      <div class="dot" style="background: var(--blue);"></div>
+      <div class="label">Well-managed <span class="muted" style="font-weight:400">(90–100)</span></div>
+      <div class="bar"><div class="fill" style="width: 100%; background: var(--blue);"></div></div>
+      <div class="count">9,985</div>
+      <div class="share">52.1%</div>
+    </div>
+
+    <div class="callout">
+      <b>The "Poorly managed" tier is intentionally small.</b>
+      Those 28 buildings are the realistic, actionable shortlist —
+      not a thousand noisy leads.
+    </div>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>06</span>
+    </div>
+  </section>
+
+  <!-- ──────────────────────── 7. Score distribution ─── -->
+  <section class="slide s-chart" data-label="Score Distribution">
+    <div class="eyebrow">Distribution</div>
+    <h3 class="sub">Most NYC buildings land in the <em>moderate-to-well</em> zone.</h3>
+    <div class="chart-wrap">
+      <img src="score_distribution.png" alt="Score distribution histogram">
+    </div>
+
+    <div class="footstrip">
+      <span>Daisy Prospect Intelligence</span>
+      <span>07</span>
+    </div>
+  </section>
+
+  <!-- ─────────────────────── 8. Borough breakdown ─── -->
+  <section class="slide s-chart" data-label="Borough Breakdown">
+    <div class="eyebrow">By borough</div>
+    <h3 class="sub">Manhattan, Brooklyn, Bronx — <em>different stories.</em></h3>
+    <div class="chart-wrap">
+      <img src="borough_breakdown.png" alt="Average health score by borough">
+    </div>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>08</span>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── 9. Top prospects ─── -->
+  <section class="slide s-prospects" data-label="Top 10 Prospects">
+    <div class="eyebrow">The shortlist</div>
+    <h3 class="sub">10 <em>hot prospects</em> Daisy could call this week.</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Address</th>
+          <th>Borough</th>
+          <th>Score</th>
+          <th style="text-align:right">Open viol.</th>
+          <th style="text-align:right">Class C</th>
+          <th style="text-align:right">Avg resolution (days)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1055 Bergen Street</td><td>Brooklyn</td><td><span class="score">24.6</span></td><td style="text-align:right">246</td><td style="text-align:right">65</td><td style="text-align:right">172</td></tr>
+        <tr><td>765 Lincoln Avenue</td><td>Brooklyn</td><td><span class="score">38.3</span></td><td style="text-align:right">224</td><td style="text-align:right">18</td><td style="text-align:right">264</td></tr>
+        <tr><td>760 Eldert Lane</td><td>Brooklyn</td><td><span class="score">51.1</span></td><td style="text-align:right">155</td><td style="text-align:right">28</td><td style="text-align:right">244</td></tr>
+        <tr><td>1097 Prospect Place</td><td>Brooklyn</td><td><span class="score">51.4</span></td><td style="text-align:right">148</td><td style="text-align:right">37</td><td style="text-align:right">225</td></tr>
+        <tr><td>6623 Ft Hamilton Pkwy</td><td>Brooklyn</td><td><span class="score">53.1</span></td><td style="text-align:right">133</td><td style="text-align:right">39</td><td style="text-align:right">421</td></tr>
+        <tr><td>357 Court Street</td><td>Brooklyn</td><td><span class="score">53.8</span></td><td style="text-align:right">133</td><td style="text-align:right">24</td><td style="text-align:right">336</td></tr>
+        <tr><td>243 East 54 Street</td><td>Brooklyn</td><td><span class="score">57.8</span></td><td style="text-align:right">118</td><td style="text-align:right">16</td><td style="text-align:right">110</td></tr>
+        <tr><td>1600 3rd Avenue</td><td>Manhattan</td><td><span class="score">62.6</span></td><td style="text-align:right">103</td><td style="text-align:right">29</td><td style="text-align:right">83</td></tr>
+        <tr><td>790 Eldert Lane</td><td>Brooklyn</td><td><span class="score">62.7</span></td><td style="text-align:right">100</td><td style="text-align:right">5</td><td style="text-align:right">297</td></tr>
+        <tr><td>1593 Fulton Street</td><td>Brooklyn</td><td><span class="score">64.9</span></td><td style="text-align:right">106</td><td style="text-align:right">46</td><td style="text-align:right">129</td></tr>
+      </tbody>
+    </table>
+
+    <p class="small" style="margin-top: 28px;">
+      Every row is a real, addressable board in a real NYC building.
+      Daisy's growth team can walk in the door tomorrow with a specific, data-backed pitch.
+    </p>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>09</span>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────── 10. Interactive map ─── -->
+  <section class="slide s-map" data-label="Map" data-slide-key="map">
+    <div class="map-header">
+      <div>
+        <div class="eyebrow">Interactive prospect map</div>
+        <h3 class="sub">All <em>19,170</em> buildings. Click any dot.</h3>
+      </div>
+      <p class="small">
+        Clusters colored by <b>average</b> health score of buildings inside.
+        Red dot on a cluster = at least one "poorly managed" building.
+      </p>
+    </div>
+    <div class="map-wrap" style="display:flex; align-items:center; justify-content:center;">
+      <a href="https://joonselim.github.io/nyc-building-health-analysis/daisy_prospect_map.html"
+         target="_blank"
+         style="display:inline-flex; align-items:center; gap:14px; padding:22px 40px;
+                background:var(--accent); color:#fff; border-radius:12px;
+                font-size:24px; font-weight:600; letter-spacing:0.02em; text-decoration:none;
+                box-shadow:0 4px 20px rgba(201,100,28,0.35);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Open Interactive Map →
+      </a>
+    </div>
+  </section>
+
+  <!-- ─────────────────── 11. Product integration ─── -->
+  <section class="slide s-integration" data-label="Product Integration">
+    <div class="eyebrow">How Daisy could use this</div>
+    <h2 class="headline">From <em>prototype</em> to product.</h2>
+    <div class="rule"></div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <div>
+          <div class="nm">Lead prioritization dashboard</div>
+          <div class="desc">Internal view for the growth team — sort, filter, assign NYC condo/co-op prospects by health score.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div>
+          <div class="nm">Quantified sales pitch</div>
+          <div class="desc">"Your building scores 24 / 100. Here's why. Here's what Daisy would change." A concrete, data-backed conversation opener.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div>
+          <div class="nm">Board-meeting talking points</div>
+          <div class="desc">Each prospect gets a one-page diagnostic Daisy's AE walks into the board meeting with.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <div>
+          <div class="nm">Ongoing monitoring</div>
+          <div class="desc">Buildings sliding from "moderate" to "struggling" are the next wave of warm leads — surfaced automatically.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footstrip">
+      <!-- <span>Daisy Prospect Intelligence</span> -->
+      <span>11</span>
+    </div>
+  </section>
+
+  <!-- ───────────────────────── 12. Closing ─── -->
+  <section class="slide s-close dark" data-label="Closing">
+    <div class="big">
+      I understand your domain.<br>
+      I can <em>ship</em>, not just talk.<br>
+      I think like a <em>PM.</em>
+    </div>
+    <div class="sig">
+      <b>Joonse Lim</b>
+      joonselim@gmail.com · Duke Fuqua MBA '27<br>
+      Portfolio for Daisy — Summer 2026 Product Operations Intern
+    </div>
+  </section>
+
+</deck-stage>
+
+
+</body>
+</html>
