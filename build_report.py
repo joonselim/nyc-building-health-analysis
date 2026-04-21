@@ -199,6 +199,15 @@ def main():
     <iframe class="map-frame" src="daisy_prospect_map.html"></iframe>
   </div>
 
+  <!-- TOP 20 -->
+  <div class="section">
+    <h2>Top 20 Worst-Managed Buildings</h2>
+    <p class="section-note">
+      Ranked by composite health score (lowest = highest priority for Daisy outreach).
+    </p>
+    {top20_html}
+  </div>
+
   <!-- METHODOLOGY -->
   <div class="section">
     <h2>How the Score is Calculated</h2>
@@ -263,14 +272,6 @@ def main():
     <img class="chart" src="{img_comp}" alt="Score components">
   </div>
 
-  <!-- TOP 20 -->
-  <div class="section">
-    <h2>Top 20 Worst-Managed Buildings</h2>
-    <p class="section-note">
-      Ranked by composite health score (lowest = highest priority for Daisy outreach).
-    </p>
-    {top20_html}
-  </div>
 
 
 </div>
