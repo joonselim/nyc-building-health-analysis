@@ -248,8 +248,7 @@ def main():
   <div class="section">
     <h2>Score Distribution</h2>
     <p class="section-note">
-      Labels use percentile thresholds (bottom 10% = Poorly managed, 10–25% = Struggling, 25–50% = Moderate, top 50% = Well-managed)
-      because a handful of severe outlier buildings would otherwise compress the scale.
+      Labels use fixed score thresholds: &lt;70 = Poorly managed, 70–80 = Struggling, 80–90 = Moderate, 90–100 = Well-managed.
     </p>
     <img class="chart" src="{img_dist}" alt="Score distribution histogram">
   </div>
