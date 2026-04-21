@@ -1,0 +1,10 @@
+.DS_Store
+.venv/
+.claude/
+__pycache__/
+*.pyc
+daisy_prospect_map.html
+kaggle/
+test.txt
+data/hpd_violations.csv
+data/hpd_registrations.csv

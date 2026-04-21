@@ -1,0 +1,21 @@
+House #,Street,Borough,Health Score,Label,Open Violations,Class C,Class B,Avg Resolution (days),Recent (6mo)
+1055,BERGEN STREET,Brooklyn,24.6,Poorly managed,246,65,149,172,0
+765,LINCOLN AVENUE,Brooklyn,38.3,Poorly managed,224,18,163,264,0
+760,ELDERT LANE,Brooklyn,51.1,Poorly managed,155,28,94,244,0
+1097,PROSPECT PLACE,Brooklyn,51.4,Poorly managed,148,37,86,225,0
+6623,FT HAMILTON PARKWAY,Brooklyn,53.1,Poorly managed,133,39,78,421,0
+357,COURT STREET,Brooklyn,53.8,Poorly managed,133,24,76,336,0
+243,EAST 54 STREET,Brooklyn,57.8,Poorly managed,118,16,93,110,0
+1600,3 AVENUE,Manhattan,62.6,Poorly managed,103,29,63,83,0
+790,ELDERT LANE,Brooklyn,62.7,Poorly managed,100,5,59,297,0
+1593,FULTON STREET,Brooklyn,64.9,Poorly managed,106,46,49,129,0
+675,LINCOLN AVENUE,Brooklyn,64.9,Poorly managed,106,22,69,209,0
+2518,FREDERICK DOUGLASS BOULEVARD,Manhattan,64.9,Poorly managed,73,4,60,485,0
+219,WEST 144 STREET,Manhattan,64.9,Poorly managed,57,4,33,722,0
+2344,DAVIDSON AVENUE,Bronx,64.9,Poorly managed,97,20,65,366,0
+1607,TAYLOR AVENUE,Bronx,65.0,Poorly managed,30,12,16,1077,0
+8501,FT HAMILTON PARKWAY,Brooklyn,65.1,Poorly managed,89,8,55,485,0
+20,WEST 190 STREET,Bronx,65.4,Poorly managed,83,47,25,393,0
+1315,LAFAYETTE AVENUE,Bronx,65.8,Poorly managed,100,21,65,238,0
+2290,DAVIDSON AVENUE,Bronx,66.9,Poorly managed,86,15,64,255,0
+456,CITY ISLAND AVENUE,Bronx,67.8,Poorly managed,72,14,45,220,0
