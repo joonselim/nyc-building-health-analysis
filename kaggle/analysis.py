@@ -46,7 +46,7 @@ plt.rcParams.update({"font.family": "sans-serif",
 # ── 1. Load & clean violations ───────────────────────────────────────────────
 
 def load_violations(path):
-    df = pd.read_csv(
+    df = pd.read_csv(   
         path,
         usecols=[
             "violationid", "buildingid", "registrationid",
@@ -148,11 +148,7 @@ def compute_health_score(df):
         df["component_repeat_rate"]      * 0.10
     ).round(1)
 
-    # Percentile-based labels (more informative than fixed thresholds on normalized scores)
-    p10 = df["health_score"].quantile(0.10)
-    p25 = df["health_score"].quantile(0.25)
-    p50 = df["health_score"].quantile(0.50)
-    bins = [0, p10, p25, p50, 100]
+    bins = [0, 70, 80, 90, 100]
     labels = ["Poorly managed", "Struggling", "Moderate", "Well-managed"]
     df["label"] = pd.cut(df["health_score"], bins=bins, labels=labels, include_lowest=True)
 
