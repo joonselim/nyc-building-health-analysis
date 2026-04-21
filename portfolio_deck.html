@@ -378,7 +378,7 @@
 
   <!-- ─────────────────────────────────────────── 1. Title ─── -->
   <section class="slide s-title" data-label="Title">
-    <div class="eyebrow">Portfolio · Summer '26 · Product Operations</div>
+    <div class="eyebrow">Portfolio · Summer '26 · Internship</div>
     <h1 class="display">
       Daisy<br>
       Prospect <em>Intelligence.</em>
@@ -386,13 +386,13 @@
     <div class="rule" style="margin-top: 40px;"></div>
     <div class="body" style="margin-top: 24px; max-width: 1200px;">
       A lead-prioritization prototype for Daisy's growth team,
-      built from public NYC data.
+      built from public NYC data.<br>
     </div>
 
     <div class="meta-row">
       <div>
         <b>Joonse Lim</b>
-        Duke Fuqua MBA '27 · Software, AI startup, PM background
+        Duke Fuqua MBA '27 · Software Development, AI startup, PM background
       </div>
       <div style="text-align: right;">
         <b>For Daisy</b>
@@ -525,7 +525,7 @@
   <section class="slide s-tiers" data-label="Tiers">
     <div class="eyebrow">Four tiers</div>
     <h2 class="headline">Where do <em>the prospects</em> live?</h2>
-    <div class="rule"></div>
+    <!-- <div class="rule"></div> -->
 
     <div class="tier-row">
       <div class="dot" style="background: var(--red);"></div>
@@ -537,21 +537,21 @@
     <div class="tier-row">
       <div class="dot" style="background: var(--orange);"></div>
       <div class="label">Struggling <span class="muted" style="font-weight:400">(70–80)</span></div>
-      <div class="bar"><div class="fill" style="width: 10%; background: var(--orange);"></div></div>
+      <div class="bar"><div class="fill" style="width: 3%; background: var(--orange);"></div></div>
       <div class="count">689</div>
       <div class="share">3.6%</div>
     </div>
     <div class="tier-row">
       <div class="dot" style="background: var(--yellow);"></div>
       <div class="label">Moderate <span class="muted" style="font-weight:400">(80–90)</span></div>
-      <div class="bar"><div class="fill" style="width: 85%; background: var(--yellow);"></div></div>
+      <div class="bar"><div class="fill" style="width: 44%; background: var(--yellow);"></div></div>
       <div class="count">8,468</div>
       <div class="share">44.2%</div>
     </div>
     <div class="tier-row">
       <div class="dot" style="background: var(--blue);"></div>
       <div class="label">Well-managed <span class="muted" style="font-weight:400">(90–100)</span></div>
-      <div class="bar"><div class="fill" style="width: 100%; background: var(--blue);"></div></div>
+      <div class="bar"><div class="fill" style="width: 52%; background: var(--blue);"></div></div>
       <div class="count">9,985</div>
       <div class="share">52.1%</div>
     </div>
@@ -568,7 +568,32 @@
     </div>
   </section>
 
-  <!-- ──────────────────────── 7. Score distribution ─── -->
+  <!-- ─────────────────── 7. Map ─── -->
+  <section class="slide s-map" data-label="Map" data-slide-key="map">
+    <div class="map-header">
+      <div>
+        <div class="eyebrow">Interactive prospect map</div>
+        <h3 class="sub">All <em>19,170</em> buildings. Click any dot.</h3>
+      </div>
+      <p class="small">
+        Clusters colored by <b>average</b> health score of buildings inside.
+        <br>Red dot on a cluster = at least one "poorly managed" building.
+      </p>
+    </div>
+    <div class="map-wrap" style="display:flex; align-items:center; justify-content:center;">
+      <a href="https://joonselim.github.io/nyc-building-health-analysis/daisy_prospect_map.html"
+         target="_blank"
+         style="display:inline-flex; align-items:center; gap:14px; padding:22px 40px;
+                background:var(--accent); color:#fff; border-radius:12px;
+                font-size:24px; font-weight:600; letter-spacing:0.02em; text-decoration:none;
+                box-shadow:0 4px 20px rgba(201,100,28,0.35);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Open Interactive Map →
+      </a>
+    </div>
+  </section>
+
+  <!-- ──────────────────────── 8. Score distribution ─── -->
   <section class="slide s-chart" data-label="Score Distribution">
     <div class="eyebrow">Distribution</div>
     <h3 class="sub">Most NYC buildings land in the <em>moderate-to-well</em> zone.</h3>
@@ -637,31 +662,6 @@
     </div>
   </section>
 
-  <!-- ──────────────────────────── 10. Interactive map ─── -->
-  <section class="slide s-map" data-label="Map" data-slide-key="map">
-    <div class="map-header">
-      <div>
-        <div class="eyebrow">Interactive prospect map</div>
-        <h3 class="sub">All <em>19,170</em> buildings. Click any dot.</h3>
-      </div>
-      <p class="small">
-        Clusters colored by <b>average</b> health score of buildings inside.
-        Red dot on a cluster = at least one "poorly managed" building.
-      </p>
-    </div>
-    <div class="map-wrap" style="display:flex; align-items:center; justify-content:center;">
-      <a href="https://joonselim.github.io/nyc-building-health-analysis/daisy_prospect_map.html"
-         target="_blank"
-         style="display:inline-flex; align-items:center; gap:14px; padding:22px 40px;
-                background:var(--accent); color:#fff; border-radius:12px;
-                font-size:24px; font-weight:600; letter-spacing:0.02em; text-decoration:none;
-                box-shadow:0 4px 20px rgba(201,100,28,0.35);">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        Open Interactive Map →
-      </a>
-    </div>
-  </section>
-
   <!-- ─────────────────── 11. Product integration ─── -->
   <section class="slide s-integration" data-label="Product Integration">
     <div class="eyebrow">How Daisy could use this</div>
@@ -715,7 +715,7 @@
     <div class="sig">
       <b>Joonse Lim</b>
       joonselim@gmail.com · Duke Fuqua MBA '27<br>
-      Portfolio for Daisy — Summer 2026 Product Operations Intern
+      Portfolio for Daisy — Summer 2026 Intern
     </div>
   </section>
 
