@@ -171,37 +171,17 @@ def main():
 </head>
 <body>
 
-<div class="hero">
-  <div class="kpi-row">
-    <div class="kpi">
-      <div class="num">{n_buildings:,}</div>
-      <div class="lbl">Buildings Analyzed</div>
-    </div>
-    <div class="kpi">
-      <div class="num">{n_hot:,}</div>
-      <div class="lbl">Hot Prospects</div>
-    </div>
-    <div class="kpi">
-      <div class="num">{n_warm:,}</div>
-      <div class="lbl">Warm Prospects</div>
-    </div>
-    <div class="kpi">
-      <div class="num">{n_open_viols:,}</div>
-      <div class="lbl">Open Violations Tracked</div>
-    </div>
-  </div>
-</div>
-
 <div class="container">
 
   <!-- SUMMARY TABLE -->
   <div class="section">
-    <h2>Score Summary</h2>
+    <h2>NYC Building Management Health Score</h2>
     <p>
       Each building receives a <b>Building Health Score (0–100)</b> based on
       NYC HPD (Housing Preservation and Development) public violation records.
       A lower score means more unresolved violations, slower resolution, and more hazardous issues —
       signals that a building's current management company is underperforming.
+      Across {n_buildings:,} buildings analyzed, there are currently <b>{n_open_viols:,} open violations</b> tracked.
     </p>
     <p class="section-note">{n_buildings:,} buildings with open HPD violations since Jan 2022 — scored on a 0–100 scale.</p>
     {summary_html}
