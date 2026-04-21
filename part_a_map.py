@@ -84,11 +84,7 @@ def compute_health_score(df):
         + df["score_repeat"] * 0.10
     ).round(1)
 
-    # Use percentile thresholds so the distribution is meaningful despite outliers
-    p10 = df["health_score"].quantile(0.10)
-    p25 = df["health_score"].quantile(0.25)
-    p50 = df["health_score"].quantile(0.50)
-    bins = [0, p10, p25, p50, 100]
+    bins = [0, 70, 80, 90, 100]
     labels = ["Poorly managed", "Struggling", "Moderate", "Well-managed"]
     df["label"] = pd.cut(df["health_score"], bins=bins, labels=labels, include_lowest=True)
     return df
@@ -141,10 +137,10 @@ def build_map(df):
                 background:white; padding:12px 16px; border-radius:8px;
                 box-shadow:0 2px 8px rgba(0,0,0,0.3); font-family:sans-serif; font-size:13px;">
       <b>Building Health Score</b><br>
-      <span style="color:#d73027;">&#9632;</span> Poorly managed (0–39)<br>
-      <span style="color:#fc8d59;">&#9632;</span> Struggling (40–59)<br>
-      <span style="color:#fee090;">&#9632;</span> Moderate (60–79)<br>
-      <span style="color:#4575b4;">&#9632;</span> Well-managed (80–100)
+      <span style="color:#d73027;">&#9632;</span> Poorly managed (&lt;70)<br>
+      <span style="color:#fc8d59;">&#9632;</span> Struggling (70–80)<br>
+      <span style="color:#fee090;">&#9632;</span> Moderate (80–90)<br>
+      <span style="color:#4575b4;">&#9632;</span> Well-managed (90–100)
     </div>
     """
     m.get_root().html.add_child(folium.Element(legend_html))
